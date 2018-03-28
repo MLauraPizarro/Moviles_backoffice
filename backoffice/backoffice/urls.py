@@ -8,7 +8,7 @@ from inicio import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tag/', views.TagList.as_view()),
-    #path('tag/(?P<pk>[0-9]+)/',views.StockDetails.as_view()),
+    path('tag/(?P<pk>[0-9]+)/',views.TagDetail.as_view()),
 ]
 
 
