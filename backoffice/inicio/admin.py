@@ -8,7 +8,6 @@ admin.site.register(SeguidoresXPersona)
 
 admin.site.register(Receta)
 admin.site.register(RecetaXPersona)
-admin.site.register(TagXReceta)
 
 admin.site.register(Ingrediente)
 admin.site.register(Carrito)
