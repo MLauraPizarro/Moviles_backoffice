@@ -16,7 +16,7 @@ urlpatterns = [
     path('carrito/', views.CarritoList.as_view()),
     path('receta/', views.RecetaList.as_view()),
     path('favorito/', views.RecetaXPersonaList.as_view()),
-    path('tag/(?P<pk>[0-9]+)/',views.TagDetail.as_view()),
+    #path('tag/(?P<pk>[0-9]+)/',views.TagDetail.as_view()),
 ]
 
 
