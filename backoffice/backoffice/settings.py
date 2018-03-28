@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', 'moviles-backoffice.
 # Application definition
 
 INSTALLED_APPS = [
-    'inicio.apps.InicioConfig',
+    'inicio',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -100,6 +100,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 
 # Internationalization

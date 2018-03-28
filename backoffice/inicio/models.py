@@ -1,12 +1,19 @@
 from django.db import models
 
 # Create your models here.
+
+
+
 class Persona(models.Model):
     nombre = models.CharField(max_length = 50)
     correo = models.CharField(max_length = 50)
     contrasena = models.CharField(max_length = 50)
     descripcion = models.CharField(max_length = 50)
     foto = models.ImageField(upload_to = 'personas')
+  
+
+    def __str__(self):
+        return self.nombre
 
 class SeguidoresXPersona(models.Model):
     seguidor = models.ForeignKey(Persona, on_delete = models.CASCADE, related_name='seguidor') 
@@ -28,6 +35,9 @@ class Receta(models.Model):
     calificacion = models.FloatField()
     cantidad_calificaciones = models.IntegerField()
 
+    def __str__(self):
+        return self.nombre
+
 class Tag(models.Model):
     nombre = models.CharField(max_length = 20)
     #receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
@@ -42,6 +52,9 @@ class Ingrediente(models.Model):
     receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
     nombre = models.CharField(max_length = 50)
     cantidad = models.IntegerField()
+
+    def __str__(self):
+        return self.nombre
 
 class Carrito(models.Model):
     persona = models.ForeignKey(Persona, on_delete = models.CASCADE)
