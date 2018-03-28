@@ -22,13 +22,13 @@ class Receta(models.Model):
     notas = models.CharField(max_length = 100)
     dificultad = models.CharField(max_length = 10)
     tiempo = models.TimeField(auto_now_add=True)
-    porciones = models.CharField(max_length = 50)
+    porciones = models.IntegerField()
     foto = models.ImageField(upload_to = 'recetas')
     publico = models.BooleanField()
     costo = models.CharField(max_length = 50)
     publicacion = models.DateTimeField(auto_now_add=True)
-    calificacion = models.CharField(max_length = 1)
-    cantidad_calificaciones = models.CharField(max_length = 50)
+    calificacion = models.FloatField()
+    cantidad_calificaciones = models.IntegerField()
 
 class RecetaXPersona(models.Model):
     persona = models.ForeignKey(Persona, on_delete = models.CASCADE)
@@ -41,14 +41,7 @@ class TagXReceta(models.Model):
 class Ingrediente(models.Model):
     receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
     nombre = models.CharField(max_length = 50)
-    
-    cantidad = models.CharField(max_length = 100)
-    nombre = models.CharField(max_length=50)
-    nombre = models.CharField(max_length=50)
-    nombre = models.CharField(max_length=50)
-    nombre = models.CharField(max_length=50)
-    nombre = models.CharField(max_length=50)
-    nombre = models.CharField(max_length=50)
+    cantidad = models.IntegerField()
 
 class Carrito(models.Model):
     persona = models.ForeignKey(Persona, on_delete = models.CASCADE)
