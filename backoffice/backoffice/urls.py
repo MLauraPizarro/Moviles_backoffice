@@ -8,6 +8,8 @@ from inicio import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tag/', views.TagList.as_view()),
+    path('tag/(?P<pk>[0-9]+)/',views.StockDetailes.as_view()),
 ]
+
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -12,8 +12,6 @@ class SeguidoresXPersona(models.Model):
     seguidor = models.ForeignKey(Persona, on_delete = models.CASCADE, related_name='seguidor') 
     seguido = models.ForeignKey(Persona, on_delete = models.CASCADE, related_name='seguido')
 
-class Tag(models.Model):
-    nombre = models.CharField(max_length = 20)
 
 class Receta(models.Model):
     autor = models.ForeignKey(Persona, on_delete = models.CASCADE)
@@ -30,13 +28,15 @@ class Receta(models.Model):
     calificacion = models.FloatField()
     cantidad_calificaciones = models.IntegerField()
 
+class Tag(models.Model):
+    nombre = models.CharField(max_length = 20)
+    #receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
+
 class RecetaXPersona(models.Model):
     persona = models.ForeignKey(Persona, on_delete = models.CASCADE)
     receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
 
-class TagXReceta(models.Model):
-    tag = models.ForeignKey(Tag, on_delete = models.CASCADE)
-    receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
+
 
 class Ingrediente(models.Model):
     receta = models.ForeignKey(Receta, on_delete = models.CASCADE)

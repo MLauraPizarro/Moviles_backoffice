@@ -31,12 +31,6 @@ class RecetaXPersonaSerializer(serializers.ModelSerializer):
         model = RecetaXPersona
         fields = '__all__'    
 
-class TagXRecetaSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = TagXReceta
-        fields = '__all__'
-
 class IngredienteSerializer(serializers.ModelSerializer):
       
     class Meta:
