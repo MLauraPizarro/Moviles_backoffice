@@ -16,6 +16,7 @@ router.register('favorito',views.RecetaXPersonaView)
 
 
 urlpatterns = [
-    path('',include(router.urls))
+    path('',include(router.urls)),
+    path('privatePolicy/',views.privacyPolicy,name = 'privacy'),
     
 ]
