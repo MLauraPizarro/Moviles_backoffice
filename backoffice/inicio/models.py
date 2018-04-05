@@ -8,7 +8,7 @@ class Persona(models.Model):
     nombre = models.CharField(max_length = 50)
     correo = models.CharField(max_length = 50)
     contrasena = models.CharField(max_length = 50)
-    descripcion = models.CharField(max_length = 50)
+    descripcion = models.CharField(max_length = 50,blank=True)
     foto = models.ImageField(upload_to = 'personas',blank=True)
   
 
@@ -24,7 +24,7 @@ class Receta(models.Model):
     autor = models.ForeignKey(Persona, on_delete = models.CASCADE)
     nombre = models.CharField(max_length = 50)
     procedimiento = models.CharField(max_length = 100)
-    notas = models.CharField(max_length = 100)
+    notas = models.CharField(max_length = 100,blank=True)
     dificultad = models.CharField(max_length = 10)
     tiempo = models.TimeField(auto_now_add=True)
     porciones = models.IntegerField()
@@ -73,6 +73,7 @@ class Notificacion(models.Model):
 class Comentario(models.Model):
     receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
     comentario = models.CharField(max_length=250)
+    publicacion = models.DateTimeField(auto_now_add=True)
     
 
 
