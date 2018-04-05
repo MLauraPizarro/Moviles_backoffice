@@ -3,7 +3,12 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .models import *
 from .serializer import *
+from django.http import HttpResponse
+from django.template import loader
 
+
+def privacyPolicy(request):
+    return render(request,'privacy.html')
 
 
 class TagView(viewsets.ModelViewSet):
@@ -41,4 +46,6 @@ class NotificacionView(viewsets.ModelViewSet):
 class ComentarioView(viewsets.ModelViewSet):
     queryset = Comentario.objects.all()
     serializer_class = ComentarioSerializer
+
+
 
