@@ -24,7 +24,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 class PersonaSerializer(serializers.ModelSerializer):
     foto = Base64ImageField(
-        max_length=None, use_url=True,
+        max_length=None, use_url=True,blank=True
     )
     class Meta:
         model = Persona
