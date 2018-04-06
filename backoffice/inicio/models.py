@@ -73,7 +73,7 @@ class Notificacion(models.Model):
 class Comentario(models.Model):
     receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
     comentario = models.CharField(max_length=250)
-    publicacion = models.DateTimeField(auto_now_add=True,blank=True)
+    publicacion = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     
 
 
