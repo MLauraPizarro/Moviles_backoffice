@@ -28,7 +28,7 @@ class PersonaSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Persona
-        fields = '__all__'    
+        fields = ("id", 'nombre', 'correo', 'contrasena','descripcion','foto' )    
     
 class SeguidoresXPersonaSerializer(serializers.ModelSerializer):
     
