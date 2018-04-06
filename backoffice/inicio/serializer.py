@@ -8,6 +8,8 @@ from .models import *
 # Custom image field - handles base 64 encoded images
 class Base64ImageField(serializers.ImageField):
     def to_internal_value(self, data):
+        if data == None:
+            return None
         if isinstance(data, str) and data.startswith('data:image'):
             # base64 encoded image - decode
             format, imgstr = data.split(';base64,') # format ~= data:image/X,
@@ -24,7 +26,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 class PersonaSerializer(serializers.ModelSerializer):
     foto = Base64ImageField(
-        max_length=None, use_url=True,blank=True
+        max_length=None, use_url=True,
     )
     class Meta:
         model = Persona
