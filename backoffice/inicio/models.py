@@ -9,7 +9,7 @@ class Persona(models.Model):
     correo = models.CharField(max_length = 50)
     contrasena = models.CharField(max_length = 50)
     descripcion = models.CharField(max_length = 50,blank=True)
-    foto = models.FileField(blank=True)
+    foto = models.CharField(max_length = 1000000, blank=True)
   
 
     def __str__(self):
