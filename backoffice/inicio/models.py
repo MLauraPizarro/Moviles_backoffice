@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 
 # Create your models here.
 
@@ -14,6 +15,11 @@ class Persona(models.Model):
 
     def __str__(self):
         return self.nombre
+  
+        
+    
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
 
 class SeguidoresXPersona(models.Model):
     seguidor = models.ForeignKey(Persona, on_delete = models.CASCADE, related_name='seguidor') 

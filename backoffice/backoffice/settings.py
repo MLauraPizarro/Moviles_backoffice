@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', 'moviles-backoffice.herokuapp.com']
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_root")
+
+
+#MEDIA_ROOT = os.path.join(CURRENT_PATH, 'media').replace('\\','/')
+
 
 # Application definition
 
