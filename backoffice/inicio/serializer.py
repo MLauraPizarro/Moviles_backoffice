@@ -5,6 +5,8 @@ from rest_framework import serializers
 from .models import *
 
 
+
+
 # Custom image field - handles base 64 encoded images
 class Base64ImageField(serializers.ImageField):
     def to_internal_value(self, data):
@@ -27,9 +29,11 @@ class PersonaSerializer(serializers.ModelSerializer):
     foto = Base64ImageField(required = False,
         max_length = None, use_url = True,
     )
+    
     class Meta:
         model = Persona
-        fields = ("id", 'nombre', 'correo', 'contrasena','descripcion','foto' )    
+        fields = ("id", 'nombre', 'correo', 'contrasena','descripcion','foto','url' ) 
+        
     
 class SeguidoresXPersonaSerializer(serializers.ModelSerializer):
     

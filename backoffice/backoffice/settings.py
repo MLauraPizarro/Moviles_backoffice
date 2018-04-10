@@ -145,4 +145,18 @@ STATICFILES_DIRS = [
     ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage' 
+'''
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 
+
+IMGUR_CONSUMER_ID = "8e93376c5991784"
+IMGUR_CONSUMER_SECRET = "fe404cefcac0b78fbcb31224437b7262ad2b1ec1"
+IMGUR_USERNAME = "MaraLauraPizarro"
+IMGUR_ACCESS_TOKEN = "5ba02ffdb021bb2b282af917a289b431e7fd65c3"
+IMGUR_ACCESS_TOKEN_REFRESH = "f8ea8ae27d89ab6ca592959ec311e09cb66c2e4e"
+
+
+DROPBOX_ACCESS_TOKEN = 'pZzLul2e0TQAAAAAAAA2ivhpEYaerOhr3nOyFApe6H9F_t9QtCUx2zML014mpbXu'
+DROPBOX_CONSUMER_KEY = 'v427ihlmwbpwr6c'
+DROPBOX_CONSUMER_SECRET = 'zufcevtxlzc1ruc'
+'''
