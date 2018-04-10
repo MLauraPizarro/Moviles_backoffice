@@ -3,9 +3,7 @@ from django.utils.safestring import mark_safe
 import base64
 import os
 
-
 from datetime import datetime
-
 from imgurpython import ImgurClient
 
 
@@ -19,9 +17,9 @@ refresh_token = 'f8ea8ae27d89ab6ca592959ec311e09cb66c2e4e'
 client = ImgurClient(client_id, client_secret)
 client.set_user_auth(access_token, refresh_token)
 
-aux = True
 
-def upload_image(client,image_path,album):
+
+def upload_image(client,image_path,album,nombre):
     album = None
     """
     Uploads and image to imgur
@@ -29,9 +27,9 @@ def upload_image(client,image_path,album):
     BASE = os.path.dirname(os.path.abspath(__file__))
     config = {
         'album': album,
-        'name': 'Ukulele Chords',
-        'title': 'A 7sus2 Chord',
-        'description': 'Chord chart generated: {0}'.format(datetime.now())
+        'name': nombre,
+        'title': nombre,
+        'description': 'Imagen: {0}'.format(datetime.now())
     }
 
     print('Uploading image...')
@@ -53,8 +51,6 @@ class Persona(models.Model):
     url = models.TextField(max_length = 250, blank=True, editable = False)
     __original_foto = None
 
-    def filename(self):
-        return os.path.basename(self.foto.name)
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         if self.foto != self.__original_foto and self.foto != None:
@@ -64,7 +60,7 @@ class Persona(models.Model):
             path = "../media_root/personas/" + nombre.replace(" ", "_")
             print (nombre.replace(" ", "_"))
 
-            image = upload_image(client,path,"Persona")
+            image = upload_image(client,path,"Persona",nombre)
             self.url = format(image['link'])
             print("Image was posted!")
             print("You can find the image here: {0}".format(image['link']))
@@ -94,12 +90,36 @@ class Receta(models.Model):
     dificultad = models.CharField(max_length = 10)
     tiempo = models.TimeField(auto_now_add=True)
     porciones = models.IntegerField()
-    foto = models.ImageField(upload_to = 'recetas')
     publico = models.BooleanField()
     costo = models.CharField(max_length = 50)
     publicacion = models.DateTimeField(auto_now_add=True)
     calificacion = models.FloatField()
     cantidad_calificaciones = models.IntegerField()
+    foto = models.FileField(upload_to = 'recetas',blank=True)
+    url = models.TextField(max_length = 250, blank=True, editable = False)
+    __original_foto = None
+
+
+    def save(self, force_insert=False, force_update=False, *args, **kwargs):
+        if self.foto != self.__original_foto and self.foto != None:
+            super(Receta, self).save()
+            nombre = ""
+            nombre = (os.path.basename(self.foto.name))
+            path = "../media_root/recetas/" + nombre.replace(" ", "_")
+            print (nombre.replace(" ", "_"))
+
+            image = upload_image(client,path,"Receta",nombre)
+            self.url = format(image['link'])
+            print("Image was posted!")
+            print("You can find the image here: {0}".format(image['link']))
+            self.__original_foto = self.foto
+            self.save()
+        else:
+            super(Receta, self).save()
+
+    def __init__(self, *args, **kwargs):
+        super(Receta, self).__init__(*args, **kwargs)
+        self.__original_foto = self.foto
 
     def __str__(self):
         return self.nombre

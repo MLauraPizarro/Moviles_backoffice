@@ -42,6 +42,9 @@ class SeguidoresXPersonaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class RecetaSerializer(serializers.ModelSerializer):
+    foto = Base64ImageField(required = False,
+        max_length = None, use_url = True,
+    )
     
     class Meta:
         model = Receta
