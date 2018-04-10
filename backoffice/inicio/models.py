@@ -57,7 +57,7 @@ class Persona(models.Model):
         return os.path.basename(self.foto.name)
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
-        if self.foto != self.__original_foto:
+        if self.foto != self.__original_foto and self.foto != None:
             super(Persona, self).save()
             nombre = ""
             nombre = (os.path.basename(self.foto.name))
