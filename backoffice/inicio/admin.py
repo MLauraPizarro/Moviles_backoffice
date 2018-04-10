@@ -8,13 +8,14 @@ admin.site.register(Tag)
 
 class PersonaAdmin(admin.ModelAdmin):
     readonly_fields=('url',)
-
-
 admin.site.register(Persona,PersonaAdmin)
 
 admin.site.register(SeguidoresXPersona)
 
-admin.site.register(Receta)
+class RecetaAdmin(admin.ModelAdmin):
+    readonly_fields=('url',)
+admin.site.register(Receta,RecetaAdmin)
+
 admin.site.register(RecetaXPersona)
 
 admin.site.register(Ingrediente)
