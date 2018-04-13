@@ -126,7 +126,10 @@ class Receta(models.Model):
 
 class Tag(models.Model):
     nombre = models.CharField(max_length = 20)
-    #receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
+    receta = models.ForeignKey(Receta, on_delete = models.CASCADE,default="")
+
+    def __str__(self):
+        return self.nombre
 
 class RecetaXPersona(models.Model):
     persona = models.ForeignKey(Persona, on_delete = models.CASCADE)
