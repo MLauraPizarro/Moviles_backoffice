@@ -85,6 +85,7 @@ class SeguidoresXPersona(models.Model):
 class Receta(models.Model):
     autor = models.ForeignKey(Persona, on_delete = models.CASCADE)
     nombre = models.CharField(max_length = 50)
+    duracion = models.CharField(max_length = 10,blank=True,default="")
     procedimiento = models.CharField(max_length = 100)
     notas = models.CharField(max_length = 100,blank=True)
     dificultad = models.CharField(max_length = 10)
@@ -97,7 +98,6 @@ class Receta(models.Model):
     cantidad_calificaciones = models.IntegerField()
     foto = models.FileField(upload_to = 'recetas',blank=True)
     url = models.TextField(max_length = 250, blank=True, editable = False)
-    duracion = models.CharField(max_length = 10,blank=True,default="")
     __original_foto = None
 
 
