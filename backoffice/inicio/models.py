@@ -53,7 +53,7 @@ class Persona(models.Model):
 
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
-        if self.foto != self.__original_foto and self.foto != None:
+        if ((not self.url or self.foto != self.__original_foto) and self.foto != None):
             super(Persona, self).save()
             nombre = ""
             nombre = (os.path.basename(self.foto.name))
@@ -102,7 +102,7 @@ class Receta(models.Model):
 
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
-        if self.foto != self.__original_foto and self.foto != None:
+        if ((not self.url or self.foto != self.__original_foto) and self.foto != None):
             super(Receta, self).save()
             nombre = ""
             nombre = (os.path.basename(self.foto.name))
