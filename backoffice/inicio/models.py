@@ -140,7 +140,7 @@ class RecetaXPersona(models.Model):
 
 class Ingrediente(models.Model):
     receta = models.ForeignKey(Receta, on_delete = models.CASCADE)
-    nombre = models.CharField(max_length = 50)
+    nombre = models.CharField(max_length = 250)
     cantidad = models.IntegerField()
 
     def __str__(self):
